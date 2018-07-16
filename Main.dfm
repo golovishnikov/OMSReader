@@ -36,7 +36,7 @@ object MainForm: TMainForm
     Height = 424
     Align = alTop
     Strings.Strings = (
-      #1053#1086#1084#1077#1088' '#1087#1086#1083#1080#1089#1072'=OI.MedicalIncuranceNumber'
+      #1053#1086#1084#1077#1088' '#1087#1086#1083#1080#1089#1072'=OI.MedicalInsuranceNumber'
       #1044#1072#1090#1072' '#1089#1086#1079#1076#1072#1085#1080#1103'=Date2Str(OI.RegistrationDate)'
       #1044#1077#1081#1089#1090#1074#1091#1077#1090' '#1076#1086'=OI.MedicalInsuranceDateEnd'
       #1053#1086#1084#1077#1088' '#1082#1072#1088#1090#1086#1095#1082#1080'?=OI.Policy'

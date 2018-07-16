@@ -10,7 +10,7 @@ uses
 type
   // Данные владельца карты
   TOwnerInfo = record
-    MedicalIncuranceNumber: String;   // Номер полиса
+    MedicalInsuranceNumber: String;   // Номер полиса
     RegistrationDate: TDate; // Дата создания карточки?
     MedicalInsuranceDateEnd: TDate;   // Действует до, может 0, значит не ограничен
     Policy: String;                   // Номер карточки?
@@ -132,7 +132,7 @@ implementation
 type
   // Список полей владельца карты ОМС
   TOwnerInfoFields = (
-    oiMedicalIncuranceNumber,     // Номер полиса
+    oiMedicalInsuranceNumber,     // Номер полиса
     oiRegistrationDate,  // Дата создания карточки?
     oiMedicalInsuranceDateEnd,    // Действует до, может 0, значит не ограничен
     oiPolicy,                     // Номер карточки?
@@ -164,7 +164,7 @@ var
   SELECT_FILE_CHANGE: array[0..4] of Byte = ($00, $a4, $02, $0c, $02); // имя нужного файла передается в двух байтах, которые добавятся в конец списка уже в программе.
   READ_FILE_CHANGE: array[0..4] of Byte = ($00, $b0, $00, $00, $00);
 
-  OwnerInfoFieldsAddress: array[oiMedicalIncuranceNumber..oiDateEnd, 0..1] of Byte = (
+  OwnerInfoFieldsAddress: array[oiMedicalInsuranceNumber..oiDateEnd, 0..1] of Byte = (
     ($5f, $26), // Номер полиса
     ($5f, $2a), // Дата выдачи?
     ($5f, $28), // Действует до, может 0, значит не ограничен
@@ -505,8 +505,8 @@ begin
       case PType of
         $26: // Номер полиса
         begin
-          FOwnerInfo.MedicalIncuranceNumber := UTF8ToWideStr(PData^, PLength);
-          FOwnerInfo.Policy := FOwnerInfo.MedicalIncuranceNumber;
+          FOwnerInfo.MedicalInsuranceNumber := UTF8ToWideStr(PData^, PLength);
+          FOwnerInfo.Policy := FOwnerInfo.MedicalInsuranceNumber;
         end;
         $2a: // Дата выдачи?
           FOwnerInfo.RegistrationDate := ReadDateFromBuffer(PData, PLength);
